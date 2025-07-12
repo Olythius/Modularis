@@ -8,4 +8,3 @@ src/config.js
 .env
 database.yml
 terminal.log
-src/commands/generated
