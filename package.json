@@ -1,0 +1,20 @@
+{
+  "name": "modularis",
+  "version": "1.0.0",
+  "description": "A modular, AI-extendable Discord bot leveraging the DeepSeek API for dynamic, real-time command generation.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "TFAGaming",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "discord.js": "^14.17.0",
+    "discordjs-v14-bot-template": "file:",
+    "dotenv": "^16.4.5",
+    "quick-yaml.db": "^1.2.2"
+  }
+}
