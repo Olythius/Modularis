@@ -94,7 +94,7 @@ async function deepseekHandler(prompt, category) {
     } catch (e) {
         return { success: false, error: e + '' }
     }
-    const dir = path.join(__dirname, '..', 'commands', category)
+    const dir = path.join(__dirname, '..', 'commands', 'generated',category)
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true })
     }
