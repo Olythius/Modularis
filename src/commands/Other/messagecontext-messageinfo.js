@@ -6,6 +6,7 @@ module.exports = new ApplicationCommand({
     command: {
         name: 'Message Information',
         type: 3,
+        hidden: true,
     },
     options: {
         cooldown: 5000

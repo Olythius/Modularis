@@ -1,4 +1,6 @@
 node_modules
+# Documentation
+docs/README.md
 package-lock.json
 
 # DO NOT REMOVE THESE FOR SECURITY

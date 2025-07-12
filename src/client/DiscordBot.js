@@ -24,9 +24,9 @@ class DiscordBot extends Client {
     login_attempts = 0;
     login_timestamp = 0;
     statusMessages = [
-        { name: 'Status 1', type: 4 },
-        { name: 'Status 2', type: 4 },
-        { name: 'Status 3', type: 4 }
+        { name: 'DeepSeek in action', type: 4 },
+        { name: 'Giving birth to new commands?!', type: 4 },
+        { name: 'Loading your next idea (probably)', type: 4 }
     ];
 
     commands_handler = new CommandsHandler(this);

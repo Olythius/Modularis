@@ -20,7 +20,7 @@ module.exports = new MessageCommand({
      */
     run: async (client, message, args) => {
         await message.reply({
-            content: `${client.collection.message_commands.map((cmd) => '\`' + client.database.ensure('prefix-' + message.guild.id, config.commands.prefix) + cmd.command.name + '\`').join(', ')}`
+            content: `${client.collection.message_commands.filter(cmd => !cmd.command.hidden).map(cmd => '\`' + client.database.ensure('prefix-' + message.guild.id, config.commands.prefix) + cmd.command.name + '\`').join(', ')}`
         });
     }
 }).toJSON();
