@@ -1,7 +1,7 @@
 const { ChatInputCommandInteraction, ApplicationCommandOptionType } = require("discord.js");
 const DiscordBot = require("../../client/DiscordBot");
 const ApplicationCommand = require("../../structure/ApplicationCommand");
-
+const config = require("../../config");
 const CATEGORIES = ["Fun", "Games", "Misc"];
 
 module.exports = new ApplicationCommand({
@@ -35,13 +35,24 @@ module.exports = new ApplicationCommand({
     run: async (client, interaction) => {
         const category = interaction.options.getString('category');
         const prompt = interaction.options.getString('prompt');
+        const { deepseekHandler } = require('../../integrations/deepseek')
         if (!CATEGORIES.includes(category)) {
             await interaction.reply({ content: `Invalid category!`, ephemeral: true });
             return;
         }
         await interaction.reply({
-            content: `**[${category}]** ${prompt}`
+            content: `**Queued your mod command for [${category}]** with the prompt: ${prompt}`
         });
+        try {
+            const result = await deepseekHandler(prompt, category);
+            if (result.success) {
+                await interaction.followUp({ content: `**Command created!**\nCommand Name: ${config.prefix}${result.commandName}` })
+            } else {
+                await interaction.followUp({ content: `**Failed:**\n${result.error}`, ephemeral: true })
+            }
+        } catch (e) {
+            await interaction.followUp({ content: `**Handler threw error:**\n${e}`, ephemeral: true })
+        }
     },
     /**
      * @param {DiscordBot} client
