@@ -70,16 +70,24 @@ class ComponentsListener {
                 }
 
                 if (interaction.isAutocomplete()) {
+                    // First, try application command autocomplete
+                    const command = client.collection.application_commands.get(interaction.commandName);
+                    if (command && typeof command.autocomplete === 'function') {
+                        try {
+                            await command.autocomplete(client, interaction);
+                        } catch (err) {
+                            error(err);
+                        }
+                        return;
+                    }
+                    // Fallback to components autocomplete
                     const component = client.collection.components.autocomplete.get(interaction.commandName);
-
                     if (!component) return;
-
                     try {
                         component.run(client, interaction);
                     } catch (err) {
                         error(err);
                     }
-
                     return;
                 }
             } catch (err) {
