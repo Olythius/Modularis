@@ -8,3 +8,9 @@ src/config.js
 .env
 database.yml
 terminal.log
+
+# Generated commands
+src/commands/Fun
+src/commands/Games
+src/commands/Misc
+
